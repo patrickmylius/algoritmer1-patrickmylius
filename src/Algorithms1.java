@@ -36,4 +36,6 @@ public class Algorithms1 {
         System.out.println(random.nextInt(45));
     }
 
+    public String
+
 }
