@@ -30,8 +30,9 @@ public class Algorithms1 {
         exampleOfPredictableRandomNumber();
 
         //Execute method randomBoyName + randomGirlName, sets results to String boy and girl
-        String boy = randomBoyName();
-        String girl = randomGirlName();
+        Algorithms1 algo1 = new Algorithms1();
+        String boy = algo1.randomBoyName();
+        String girl = algo1.randomGirlName();
         //souts results of random names
         System.out.println(boy);
         System.out.println(girl);
@@ -41,7 +42,7 @@ public class Algorithms1 {
         String[] girlNames = new Data().getRandomPigeNavne();
         //Executes randomName method with boyNames and girlnames
         //sets result to unisexNames
-        String[] unisexNames = randomName(boyNames, girlNames);
+        String[] unisexNames = algo1.randomName(boyNames, girlNames);
 
         //For loop, souts all names in new array
         for (int i = 0; i < 89; i++) {
@@ -58,7 +59,7 @@ public class Algorithms1 {
 
     //Method randomBoyName use getters from Data class
     //returns a random boy name
-    public static String randomBoyName() {
+    public String randomBoyName() {
         Random rand = new Random();
         String[] boyName = new Data().getRandomDrengeNavne();
 
@@ -67,14 +68,14 @@ public class Algorithms1 {
 
     //Method randomGirlName use getters from Data class
     //returns a random girl name
-    public static String randomGirlName() {
+    public String randomGirlName() {
         Random rand = new Random();
         String[] girlName = new Data().getRandomPigeNavne();
 
         return girlName[rand.nextInt(girlName.length)];
     }
 
-    public static String[] randomName(String[] arr1, String[] arr2) {
+    public String[] randomName(String[] arr1, String[] arr2) {
 
         //declare length to be arr1 + arr 2 lengths
         int length = arr1.length + arr2.length;
