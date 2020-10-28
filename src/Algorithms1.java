@@ -9,15 +9,15 @@ import java.util.Random;
 
 public class Algorithms1 {
 
-    // TODO 1 - Gennemse Data klassen, og skriv gode kommentarer til det
+    //1 - Gennemse Data klassen, og skriv gode kommentarer til det
 
-    // TODO 2 - Skriv en randomBoyName() metode i Algorithms1, som returnerer et tilfældigt drengenavn fra Data klassens randomPigeNavne property OBS: randomPigeNavne skal forblive private!
+    //2 - Skriv en randomBoyName() metode i Algorithms1, som returnerer et tilfældigt drengenavn fra Data klassens randomPigeNavne property OBS: randomPigeNavne skal forblive private!
 
     // TODO 3 - Skriv en test til randomBoyName() metoden HINT: Se metoden exampleOfPredictableRandomNumber() for at se, hvordan du kan lave et tilfældigt nummer som er altid det samme (til test)
 
-    // TODO 4 - Skriv en randomGirlName() metode i Algorithms1, som returnerer et tilfældigt pigenavn fra Data klassen
+    //4 - Skriv en randomGirlName() metode i Algorithms1, som returnerer et tilfældigt pigenavn fra Data klassen
 
-    // TODO 5 - Skriv en randomName() metode i Algorithms1, som laver et sammenlagt array som indeholder både piger og drenge, og returnerer det
+    // 5 - Skriv en randomName() metode i Algorithms1, som laver et sammenlagt array som indeholder både piger og drenge, og returnerer det
 
     // TODO 6 - Skriv en test til randomName() metoden
 
@@ -26,7 +26,27 @@ public class Algorithms1 {
     // TODO 8 - Skriv en  plet eller krone generator metode (plet er boolean true og krone er boolean false)
 
     public static void main(String[] args) {
+        //execute method exampleOfPredicatableRandomNumber
         exampleOfPredictableRandomNumber();
+
+        //Execute method randomBoyName + randomGirlName, sets results to String boy and girl
+        String boy = randomBoyName();
+        String girl = randomGirlName();
+        //souts results of random names
+        System.out.println(boy);
+        System.out.println(girl);
+
+        //Declare new arrays, copying array getters from Data class
+        String[] boyNames = new Data().getRandomDrengeNavne();
+        String[] girlNames = new Data().getRandomPigeNavne();
+        //Executes randomName method with boyNames and girlnames
+        //sets result to unisexNames
+        String[] unisexNames = randomName(boyNames, girlNames);
+
+        //For loop, souts all names in new array
+        for (int i = 0; i < 89; i++) {
+            System.out.println(unisexNames[i]);
+        }
     }
 
     private static void exampleOfPredictableRandomNumber() {
@@ -36,6 +56,43 @@ public class Algorithms1 {
         System.out.println(random.nextInt(45));
     }
 
-    public String
+    //Method randomBoyName use getters from Data class
+    //returns a random boy name
+    public static String randomBoyName() {
+        Random rand = new Random();
+        String[] boyName = new Data().getRandomDrengeNavne();
+
+        return boyName[rand.nextInt(boyName.length)];
+    }
+
+    //Method randomGirlName use getters from Data class
+    //returns a random girl name
+    public static String randomGirlName() {
+        Random rand = new Random();
+        String[] girlName = new Data().getRandomPigeNavne();
+
+        return girlName[rand.nextInt(girlName.length)];
+    }
+
+    public static String[] randomName(String[] arr1, String[] arr2) {
+
+        //declare length to be arr1 + arr 2 lengths
+        int length = arr1.length + arr2.length;
+        //declare new array randName sets length to be equal to boyName and girlName array
+        String[] randName = new String[length];
+        int position = 0;
+
+        //for loop, copying elements from old boyName array to randName array
+        for (String element : arr1) {
+            randName[position] = element;
+            position++; //increase position by 1 for each run through
+        }
+        //for loop, copying elements from old girlName array to randName array
+        for (String element : arr2) {
+            randName[position] = element;
+            position++;
+        }
+        return randName;
+    }
 
 }
