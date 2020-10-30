@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Algorithms1Test {
 
+    //Testing random boy name
     @org.junit.jupiter.api.Test
     void randomBoyName() {
         Algorithms1 testName = new Algorithms1();
